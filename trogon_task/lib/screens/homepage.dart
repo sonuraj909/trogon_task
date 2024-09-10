@@ -32,22 +32,25 @@ class HomePage extends StatelessWidget {
 
         return RefreshIndicator(
           onRefresh: () async {
+            print("Refresh triggered");
             productController.fetchProducts();
           },
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  CategoryList(
-                      title: 'New Arrivals',
-                      products: productController.productList),
-                  CategoryList(
-                      title: 'Trending Products',
-                      products: productController.productList),
-                ],
+          child: ListView(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    CategoryList(
+                        title: 'New Arrivals',
+                        products: productController.productList),
+                    CategoryList(
+                        title: 'Trending Products',
+                        products: productController.productList),
+                  ],
+                ),
               ),
-            ),
+            ],
           ),
         );
       }),
